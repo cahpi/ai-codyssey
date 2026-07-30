@@ -129,3 +129,25 @@ Hello from Ubuntu Container
 exit
 root@b417da1dd2cf:/# exit
 exit
+
+## 이미지 목록 조회
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker images
+i Info →   U  In UseIMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest   c3cbe1cc1aa5       25.9kB         9.49kB    U   
+ubuntu:latest        3131b4cc82a7        161MB         45.3MB    U   
+
+## 전체 컨테이너 목록 조회
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+b417da1dd2cf   ubuntu        "bash"     7 minutes ago   Exited (0) 4 minutes ago             keen_davinci
+8c8906112dd8   hello-world   "/hello"   8 minutes ago   Exited (0) 8 minutes ago             focused_hamilton
+
+## 로그 조회
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker logs
+docker: 'docker logs' requires 1 argument
+Usage:  docker logs [OPTIONS] CONTAINER
+Run 'docker logs --help' for more information
+

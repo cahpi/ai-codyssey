@@ -31,7 +31,7 @@
 
 - OS / Shell / Terminal: Windows 11 / Git bush
 - Docker Version: Docker version 29.6.2, build dfc4efb
-- Git Version: (git--version 출력값)
+- Git Version: git version 2.55.0.windows.3
 
 ## 2. 터미널 및 권한 실습 로그
 
