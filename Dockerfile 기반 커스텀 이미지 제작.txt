@@ -1,0 +1,51 @@
+A 방식: NGINX 웹 서버 베이스 (정적 파일 교체)
+HTML, (디렉토리 : /app/index.html)
+<h1>My NGINX Custom Web Server</h1>
+Dockerfile
+FROM nginx:alpine
+COPY ./app /usr/share/nginx/html
+EXPOSE 80
+
+# 1. 이미지 빌드
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker build -t my-nginx-web .
+# 2. 포트 매핑 후 컨테이너 실행 (호스트 8080 -> 컨테이너 80)
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run -d -p 8080:80 --name nginx-container my-nginx-web
+a579fb088c149e7c3d2fde7b832d31ac29d2551de8a9592dc06fc5e4dd285c76
+# 3. 접속 검증 (터미널 curl 또는 웹 브라우저에서 http://localhost:8080 접속)
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ curl http://localhost:8080
+HTML
+<h1>AI Codyssey Docker Test Server</h1>
+
+B 방식: Linux(Ubuntu) 베이스 (패키지 설치 및 사용자/환경변수 설정)
+Dockerfile.ubuntu 파일 생성
+
+Dockerfile
+FROM ubuntu:22.04
+# 필수 패키지(Python3) 설치 및 대화형 입력 방지
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y python3 curl && rm -rf /var/lib/apt/lists/*
+# 커스텀 환경변수 및 작업 디렉터리 설정
+ENV APP_ENV=production
+WORKDIR /my_app
+# 간단한 HTML 파일 생성
+RUN echo "<h1>Hello from Ubuntu Python Web Server!</h1>" > index.html
+EXPOSE 9000
+# Python 기본 HTTP 서버 실행 (포트 9000)
+CMD ["python3", "-m", "http.server", "9000"]
+# 1. 지정한 Dockerfile로 이미지 빌드 (-f 옵션)
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker build -f Dockerfile.ubuntu -t my-ubuntu-web .
+
+# 2. 컨테이너 실행
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run -d -p 9000:9000 --name ubuntu-container my-ubuntu-web
+de880c8e43d536f90ba9c210826d6495a9a03d99f8a2e747bff25f0a7853f566
+
+# 3. 접속 검증
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ curl http://localhost:9000
+<h1>Hello from Ubuntu Python Web Server!</h1>
+

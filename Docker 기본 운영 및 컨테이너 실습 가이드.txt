@@ -1,0 +1,131 @@
+1. Docker 버전 확인
+
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker --version
+Docker version 29.6.2, build dfc4efb
+
+2. Docker 데몬(엔진) 동작 여부 확인
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker info
+Client:
+ Version:    29.6.2
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  agent: Docker AI Agent Runner (Docker Inc.)
+    Version:  v1.111.0
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-agent.exe
+  ai: Docker AI Agent - Ask Gordon (Docker Inc.)
+    Version:  v1.27.0
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-ai.exe
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.35.0-desktop.2
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-buildx.exe
+  compose: Docker Compose (Docker Inc.)
+    Version:  v5.3.1
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-compose.exe
+  debug: Get a shell into any image or container (Docker Inc.)
+    Version:  0.0.47
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-debug.exe
+  desktop: Docker Desktop commands (Docker Inc.)
+    Version:  v0.4.3
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-desktop.exe
+  dhi: CLI for managing Docker Hardened Images (Docker Inc.)
+    Version:  v0.0.7
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-dhi.exe
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.31
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-extension.exe
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.4.0
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-init.exe
+  mcp: Docker MCP Plugin (Docker Inc.)
+    Version:  v0.43.3
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-mcp.exe
+  model: Docker Model Runner (Docker Inc.)
+    Version:  v1.2.6
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-model.exe
+  offload: Docker Offload (Docker Inc.)
+    Version:  v0.6.9
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-offload.exe
+  pass: Docker Pass Secrets Manager Plugin (beta) (Docker Inc.)
+    Version:  v0.2.0
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-pass.exe
+  sandbox: "docker sandbox" is deprecated, use Docker Sandboxes instead (Docker Inc.)
+    Version:  v0.13.0
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-sandbox.exe
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.23.1
+    Path:     C:\Users\hello\.docker\cli-plugins\docker-scout.exe
+
+Server:
+failed to connect to the docker API at npipe:////./pipe/docker_engine; check if the path is correct and if the daemon is running: open //./pipe/docker_engine: The system cannot find the file specified.
+
+3.hello-world 컨테이너 실행
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+4.ubuntu 컨테이너 실행 및 내부 진입
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+a3679419df18: Pull complete 
+ed819469700f: Pull complete 
+e16351a257e4: Download complete 
+Digest: sha256:3131b4cc82a783df6c9df078f86e01819a13594b865c2cad47bd1bca2b7063bb
+Status: Downloaded newer image for ubuntu:latest
+# 컨테이너 내부 파일 목록 확인
+root@b417da1dd2cf:/# ls -la
+total 60
+drwxr-xr-x   1 root root 4096 Jul 30 11:41 .
+drwxr-xr-x   1 root root 4096 Jul 30 11:41 ..
+-rwxr-xr-x   1 root root    0 Jul 30 11:41 .dockerenv
+drwxr-xr-x   2 root root 4096 Jul 13 16:06 .rock
+lrwxrwxrwx   1 root root    7 Apr 20 08:46 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 20 08:46 boot
+drwxr-xr-x   5 root root  360 Jul 30 11:41 dev
+drwxr-xr-x   1 root root 4096 Jul 30 11:41 etc
+drwxr-xr-x   3 root root 4096 Jul 13 16:06 home
+lrwxrwxrwx   1 root root    7 Apr 20 08:46 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Apr 20 08:46 lib64 -> usr/lib64
+drwxr-xr-x   2 root root 4096 Jul 13 16:05 media
+drwxr-xr-x   2 root root 4096 Jul 13 16:05 mnt
+drwxr-xr-x   2 root root 4096 Jul 13 16:05 opt
+dr-xr-xr-x 225 root root    0 Jul 30 11:41 proc
+drwx------   2 root root 4096 Jul 13 16:06 root
+drwxr-xr-x   4 root root 4096 Jul 13 16:06 run
+lrwxrwxrwx   1 root root    8 Apr 20 08:46 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4096 Jul 13 16:05 srv
+dr-xr-xr-x  13 root root    0 Jul 30 11:41 sys
+drwxrwxrwt   2 root root 4096 Jul 13 16:06 tmp
+drwxr-xr-x  12 root root 4096 Jul 13 16:05 usr
+drwxr-xr-x  11 root root 4096 Jul 13 16:06 var
+# 텍스트 출력 테스트
+root@b417da1dd2cf:/# echo "Hello from Ubuntu Container"
+Hello from Ubuntu Container
+# 우분투 컨테이너 종료 및 밖으로 나오기
+exit
+root@b417da1dd2cf:/# exit
+exit
