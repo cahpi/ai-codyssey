@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+
+  cache-db:
+    image: redis:latest
+
+  app-worker:
+    image: alpine
+    # alpine은 실행할 명령이 없으면 바로 종료되므로, 계속 켜져 있게 설정합니다.
+    command: ["tail", "-f", "/dev/null"]
