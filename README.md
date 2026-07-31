@@ -26,15 +26,21 @@
    운영 안정성 확보: 컨테이너의 생성과 삭제에 영향을 받지 않는 데이터 보존 체계를 성공적으로 구축했습니다.
    개발 생산성 향상: 로컬 코드 변경 사항이 컨테이너 환경에 즉시 반영되는 구조를 검증했습니다.
    형상 관리 체계 완성: Docker 환경 구축 과정 및 최종 결과물을 GitHub 저장소에 안전하게 업로드 및 백업했습니다.
+<<<<<<< HEAD
    
 
 
 ## 1. 실행 환경 및 수행 체크리스트
+=======
+
+## 1. 실행 환경
+>>>>>>> 6386f2996e4bb39eb5478f8eb189b5061be91295
 
 - OS / Shell / Terminal: Windows 11 / Git bush
 - Docker Version: Docker version 29.6.2, build dfc4efb
 - Git Version: git version 2.55.0.windows.3
 
+<<<<<<< HEAD
 [x] 터미널 기본 조작 및 폴더 구성
 [x] 권한 변경 실습
 [x] Docker 설치/ 점검
@@ -45,6 +51,8 @@
 [x] 볼륨 영속성
 [x] Git 설정 + VS Code Github 연동
 
+=======
+>>>>>>> 6386f2996e4bb39eb5478f8eb189b5061be91295
 ## 2. 터미널 및 권한 실습 로그
 
 'practice'라는 이름의 새 폴더 만들기
@@ -62,7 +70,11 @@ $ pwd
 
 'test.txt'라는 빈 파일 생성
 hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+<<<<<<< HEAD
 $ touch test.txt
+=======
+$ touch test.text
+>>>>>>> 6386f2996e4bb39eb5478f8eb189b5061be91295
 
 'test.txt' 파일에 "Hello World"라는 글자 집어넣기
 hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
@@ -466,11 +478,15 @@ local my-data-vol
 컨테이너 삭제 후: 첫 번째 컨테이너는 디스크 상에서 흔적도 없이 완전히 삭제됨(--rm).
 비교 및 검증 결과: 컨테이너가 통째로 삭제되었음에도 불구하고, Docker가 관리하는 독립 저장소(my-data-vol)에 데이터가 안전하게 보존되어 있었기 때문에, 새로운 컨테이너를 통해 데이터(Persistent Data)를 유실 없이 그대로 조회(복원)할 수 있음을 증명했습니다.
 
+<<<<<<< HEAD
 ## 6. Git hub 연동
 
 
 
 ## 7. 트러블슈팅 (2건 이상)
+=======
+## 6. 트러블슈팅 (2건 이상)
+>>>>>>> 6386f2996e4bb39eb5478f8eb189b5061be91295
 
 1.트러블슈팅 이슈 (B 방식: Linux(Ubuntu) 베이스, Dockerfile 기반 커스텀 이미지 제작 시 )
 
