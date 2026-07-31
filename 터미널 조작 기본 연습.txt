@@ -1,0 +1,52 @@
+터미널 조작 기본 연습, git bush
+# 'practice'라는 이름의 새 폴더 만들기
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ mkdir practice
+# 'practice' 폴더 안으로 들어가기
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ cd practice
+# 제대로 들어왔는지 현재 위치 확인하기
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ pwd
+/c/ai_codyssey/practice
+# 'test.txt'라는 빈 파일 생성
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ touch test.text
+# 'test.txt' 파일에 "Hello World"라는 글자 집어넣기
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ echo "Hello World" > test.txt
+# 'test.txt' 파일 내용 확인해보기
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ cat test.txt
+Hello World
+# test.txt를 복사해서 copy.txt 만들기
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ cp test.txt copy.txt
+# 파일 목록 확인해보기 (test.txt, copy.txt 두 개가 보여야 함)
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ ls
+copy.txt  test.txt
+# copy.txt의 이름을 renamed.txt로 바꾸기
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ mv copy.txt renamed.txt
+# 파일 목록 다시 확인 (copy.txt가 사라지고 renamed.txt가 생김)
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ ls
+renamed.txt  test.txt
+# renamed.txt 파일 삭제하기
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ rm renamed.txt
+# 현재폴더 파일 확인
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ ls
+test.txt
+
+
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ ls
+test.txt
+
+hello@Desktop-1 MINGW64 /c/ai_codyssey/practice
+$ 
+
+

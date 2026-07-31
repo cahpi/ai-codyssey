@@ -1,0 +1,17 @@
+FROM ubuntu:22.04
+
+# 필수 패키지(Python3) 설치 및 대화형 입력 방지
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y python3 curl && rm -rf /var/lib/apt/lists/*
+
+# 커스텀 환경변수 및 작업 디렉터리 설정
+ENV APP_ENV=production
+WORKDIR /my_app
+
+# 간단한 HTML 파일 생성
+RUN echo "<h1>Hello from Ubuntu Python Web Server!</h1>" > index.html
+
+EXPOSE 9000
+
+# Python 기본 HTTP 서버 실행 (포트 9000)
+CMD ["python3", "-m", "http.server", "9000"]

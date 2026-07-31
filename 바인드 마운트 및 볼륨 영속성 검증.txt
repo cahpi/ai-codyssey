@@ -1,0 +1,54 @@
+바인드 마운트 (Bind Mount) 실습
+# 1. 이미지 빌드
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker build -t my-nginx-web .
+*build -t : 생성될 Docker 이미지에 이름(Name)과 태그(Tag)를 지정하는 옵션입니다.
+
+# 2. 포트 매핑 후 컨테이너 실행 (호스트 8080 -> 컨테이너 80)
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run -d -p 8080:80 -v //c/ai_codyssey/app:/usr/share/nginx/html --name nginx-container nginx:alpine
+3b7526613529f8caeb17d519f3b715ba70a1976f69c9fdec8335f2a86ccb968e
+* run -d :컨테이너를 데몬(Daemon) 형태, 즉 백그라운드에서 실행하도록 하는 옵션
+* run -p : -p (Port Mapping) : 포트 바인딩/매핑, 호스트(내 PC)의 네트워크 포트와 컨테이너 내부의 포트를 연결(매핑)해주는 옵션
+
+#3. 접속 검증 (터미널 curl 또는 웹 브라우저에서 http://localhost:8080 접속)
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ curl http://localhost:8080
+<h1>Hello!, AI codyssey</h1>
+
+# 4. 호스트에서 index.html 파일 내용을 수정해보기
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ echo "<h1>Updated Content via Bind Mount!</h1>" > app/index.html
+
+# 5. 수정 후 즉시 반영되었는지 재검증 (컨테이너 재시작 없이 변경됨)
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ curl http://localhost:8080
+<h1>Updated Content via Bind Mount!</h1>
+
+Docker 볼륨 영속성 (Named Volume) 검증
+# 1. 'my-data-vol'이라는 이름의 Docker 볼륨 생성
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker volume create my-data-vol
+my-data-vol
+
+# 2. 볼륨을 /data 경로에 연결하여 컨테이너 실행 후 파일 쓰기
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run --rm -v my-data-vol:/data ubuntu bash -c "echo 'Persistent Data' > /data/test.txt"
+
+# 3. 데이터가 보존되는지 새로운 컨테이너를 열어서 확인
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker run --rm -v my-data-vol:/data ubuntu cat //data/test.txt
+Persistent Data
+# (출력: Persistent Data)
+
+# 4. 검증 완료 후 볼륨 조회 명령어 기록
+hello@Desktop-1 MINGW64 /c/ai_codyssey
+$ docker volume ls
+DRIVER    VOLUME NAME
+local     my-data-vol
+
+참고
+-rm (Remove on exit)
+뜻: 컨테이너가 종료(Exited)될 때 자동으로 컨테이너를 삭제하는 옵션입니다.
+-v 또는 --volume (Volume / Bind Mount)
+뜻: 호스트(내 컴퓨터)의 저장 공간이나 Docker 볼륨을 컨테이너 내부의 경로와 연결(마운트)하는 옵션입니다.
