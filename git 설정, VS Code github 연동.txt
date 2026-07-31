@@ -1,0 +1,70 @@
+사용자 이름 설정
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey
+$ git config --global user.name "cahpi"
+
+사용자 이메일 설정
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey
+$ git config --global user.email "hellohoho19@gmail.com"
+
+기본 브랜치 이름을 main으로 설정 (최신 관례)
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey
+$ git config --global init.defaultBranch main
+
+vscode와 git hub 리모트 연결
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey 
+$ git remote add origin https://github.com/cahpi/ai-codyssey.git
+
+현재 브런치 이름을 main으로 변경
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey (main)
+$ git branch -M main
+
+# 설정된 전체 리스트 확인
+git config --list
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=cahpi
+user.email=hellohoho19@gmail.com
+init.defaultbranch=main
+(END)
+
+# git 저장소 초기화
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey
+$ git init
+Initialized empty Git repository in C:/ai-codyssey/.git/
+
+# git add . (변경 사항 무대에 올리기) **.**은 모든 변경된 파일을 의미
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey (main|MERGING)
+$ git add . 
+
+# 코멘트 달기, 무엇이 변했는지
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey (main|MERGING)
+$ git commit -m "update: README.md"
+[main 30a8537] update: README.md
+
+#git 저장소에 파일 업로드(push)하기
+user@DESKTOP-BOQ4DKE MINGW64 /c/ai-codyssey (main)
+$ git push -u origin main
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (16/16), done.
+Writing objects: 100% (16/16), 1.64 KiB | 841.00 KiB/s, done.
+Total 16 (delta 11), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (11/11), completed with 3 local objects.
+To https://github.com/cahpi/ai-codyssey.git
+   5468039..30a8537  main -> main
+branch 'main' set up to track 'origin/main'.
+
